@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import Dishdetail from "./DishdetailComponent";
+import moment from "moment";
 
 class Menu extends Component {
 
@@ -23,21 +24,20 @@ class Menu extends Component {
     {
         if(dish != null)
         {
-            const showComments = dish.comments.map((comms) => {
-                <p>{comms.author}</p>
-            });
-
-            return(
+            return (
                 <div>
                     <h4>Comments</h4>
-                    {showComments}
-
-                    {/* <Card>
-                        <CardBody>
-                            <CardTitle>{dish.name}</CardTitle>
-                            <CardText>{dish.description}</CardText>
-                        </CardBody>
-                    </Card> */}
+                    <ul style={{listStyle: "none", padding: 0}}>
+                        {dish.comments.map(function(d){
+                            return (
+                                <>
+                                    <li key={d.id}>{d.comment}</li>
+                                    <li>-- {d.author}, {moment(d.date).format("MMM DD, YYYY")}</li>
+                                    <br/>
+                                </>
+                            )
+                        })}
+                    </ul>
                 </div>
             )
         }
