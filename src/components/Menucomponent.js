@@ -30,11 +30,11 @@ class Menu extends Component {
                     <ul style={{listStyle: "none", padding: 0}}>
                         {dish.comments.map(function(d){
                             return (
-                                <>
-                                    <li key={d.id}>{d.comment}</li>
+                                <div key={d.id}>
+                                    <li>{d.comment}</li>
                                     <li>-- {d.author}, {moment(d.date).format("MMM DD, YYYY")}</li>
                                     <br/>
-                                </>
+                                </div>
                             )
                         })}
                     </ul>
